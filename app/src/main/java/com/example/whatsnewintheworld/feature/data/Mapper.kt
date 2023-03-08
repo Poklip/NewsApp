@@ -8,5 +8,6 @@ fun ArticleRemoteModel.toDomain() = ArticleModel(
     title = title,
     description = description ?: "Nothing happened.",
     url = url,
-    publishedAt = publishedAt
+    publishedAt = publishedAt,
+    sourceName = source.sourceName
 )

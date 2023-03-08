@@ -13,5 +13,7 @@ data class ArticleRemoteModel(
     @SerializedName("url")
     val url: String,
     @SerializedName("publishedAt")
-    val publishedAt: String
+    val publishedAt: String,
+    @SerializedName("source")
+    val source: SourceRemoteModel
 )
