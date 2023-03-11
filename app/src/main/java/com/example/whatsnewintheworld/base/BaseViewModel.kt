@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 abstract class BaseViewModel<VIEW_STATE> : ViewModel() {
-
     val viewState: MutableLiveData<VIEW_STATE> by lazy { MutableLiveData(initialViewState()) }
 
     abstract fun initialViewState(): VIEW_STATE

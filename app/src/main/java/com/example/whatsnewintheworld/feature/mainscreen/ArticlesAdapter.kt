@@ -41,7 +41,7 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.textViewSourceName.text = articlesData[position].sourceName
+        viewHolder.textViewSourceName.text = articlesData[position].source
         viewHolder.textViewTitle.text = articlesData[position].title
     }
 

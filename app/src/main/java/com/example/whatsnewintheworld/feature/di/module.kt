@@ -9,7 +9,6 @@ import com.example.whatsnewintheworld.feature.mainscreen.MainScreenViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
-import retrofit2.create
 
 val mainScreenModule = module {
     single {
