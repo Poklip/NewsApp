@@ -4,6 +4,7 @@ import androidx.room.*
 import com.example.whatsnewintheworld.feature.bookmarks.data.local.model.BookmarkEntity
 import com.example.whatsnewintheworld.feature.bookmarks.di.BOOKMARKS_TABLE
 
+@Dao
 interface BookmarkDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun create(entity: BookmarkEntity)

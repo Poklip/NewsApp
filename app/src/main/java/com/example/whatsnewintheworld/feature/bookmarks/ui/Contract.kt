@@ -8,4 +8,8 @@ data class ViewState(
 )
 
 sealed class UiEvent()
-sealed class DataEvent()
+sealed class DataEvent : MyEvent {
+    object LoadBookmarks : DataEvent()
+    data class OnSuccessBookmarksLoaded(val bookmarksLoaded: List<ArticleModel>) : DataEvent()
+    data class OnFailureBookmarksLoaded(val throwable: Throwable) : DataEvent()
+}

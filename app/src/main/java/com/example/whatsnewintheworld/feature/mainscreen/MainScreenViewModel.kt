@@ -4,10 +4,11 @@ import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.whatsnewintheworld.base.BaseViewModel
 import com.example.whatsnewintheworld.base.MyEvent
+import com.example.whatsnewintheworld.feature.bookmarks.domain.BookmarksInteractor
 import com.example.whatsnewintheworld.feature.domain.ArticlesInteractor
 import kotlinx.coroutines.launch
 
-class MainScreenViewModel(private val interactor: ArticlesInteractor) : BaseViewModel<ViewState>() {
+class MainScreenViewModel(private val interactor: ArticlesInteractor, private val bookmarksInteractor: BookmarksInteractor) : BaseViewModel<ViewState>() {
 
     init {
         processDataEvent(DataEvent.LoadArticles)
@@ -32,6 +33,13 @@ class MainScreenViewModel(private val interactor: ArticlesInteractor) : BaseView
             }
             is DataEvent.OnLoadArticlesSucceed -> {
                 return previousState.copy(articles = event.articles)
+            }
+
+            is UiEvent.OnArticleClicked -> {
+                viewModelScope.launch {
+                    bookmarksInteractor.create(previousState.articles[event.index])
+                }
+                return null
             }
             else -> return null
         }

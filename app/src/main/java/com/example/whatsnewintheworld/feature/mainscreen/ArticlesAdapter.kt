@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.whatsnewintheworld.R
 import com.example.whatsnewintheworld.feature.domain.ArticleModel
 
-class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
+class ArticlesAdapter (val onItemClicked: (Int) -> Unit) : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
 
     private var articlesData: List<ArticleModel> = emptyList()
 
@@ -20,10 +20,11 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
 
         val textViewTitle: TextView
         val textViewSourceName: TextView
+        val textViewPublishedAt: TextView
         init {
             textViewTitle  = view.findViewById(R.id.tvTitle)
             textViewSourceName = view.findViewById(R.id.tvSourceName)
-
+            textViewPublishedAt = view.findViewById(R.id.tvPublishedAt)
         }
     }
 
@@ -39,10 +40,15 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
+        viewHolder.itemView.setOnClickListener{
+            onItemClicked.invoke(position)
+        }
+
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         viewHolder.textViewSourceName.text = articlesData[position].source
         viewHolder.textViewTitle.text = articlesData[position].title
+        viewHolder.textViewPublishedAt.text = articlesData[position].publishedAt
     }
 
     // Return the size of your dataset (invoked by the layout manager)

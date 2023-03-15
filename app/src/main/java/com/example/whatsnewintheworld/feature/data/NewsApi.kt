@@ -9,6 +9,6 @@ interface NewsApi {
     @GET("v2/top-headlines")
     suspend fun getArticles(
         @Query("apiKey") apiKey: String = API_KEY,
-        @Query("country") country: String = "ru",
+        @Query("country") country: String = "ca",
     ): ArticlesRemoteModel
 }
