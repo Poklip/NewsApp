@@ -12,10 +12,6 @@ class ArticlesAdapter (val onItemClicked: (Int) -> Unit) : RecyclerView.Adapter<
 
     private var articlesData: List<ArticleModel> = emptyList()
 
-    /**
-     * Provide a reference to the type of views that you are using
-     * (custom ViewHolder)
-     */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         val textViewTitle: TextView

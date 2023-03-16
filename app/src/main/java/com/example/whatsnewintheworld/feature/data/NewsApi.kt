@@ -10,5 +10,6 @@ interface NewsApi {
     suspend fun getArticles(
         @Query("apiKey") apiKey: String = API_KEY,
         @Query("country") country: String = "ca",
+        @Query("pageSize") pageSize: Int = 70,
     ): ArticlesRemoteModel
 }
