@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.EditText
+import android.widget.AutoCompleteTextView
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isVisible
@@ -19,24 +19,25 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen){
     private val recyclerView: RecyclerView by lazy { requireActivity().findViewById(R.id.rvArticles) }
     private val ivSearch: ImageView by lazy {requireActivity().findViewById(R.id.ivSearch)}
     private val tvAppTitle: TextView by lazy {requireActivity().findViewById(R.id.tvAppTitle)}
-    private val etSearch: EditText by lazy {requireActivity().findViewById(R.id.etSearch)}
+    private val actvSearch: AutoCompleteTextView by lazy {requireActivity().findViewById(R.id.actvSearch)}
     private val adapter: ArticlesAdapter by lazy {
         ArticlesAdapter {index ->
             viewModel.processUiEvent(UiEvent.OnArticleClicked(index))
         }
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
         recyclerView.adapter = adapter
 
+
+
         ivSearch.setOnClickListener {
             viewModel.processUiEvent(UiEvent.OnSearchButtonClicked)
         }
 
-        etSearch.addTextChangedListener(object : TextWatcher{
+        actvSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(text: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
 
@@ -48,11 +49,13 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen){
             }
 
         })
+
     }
+
 
     private fun render(viewState: ViewState) {
         tvAppTitle.isVisible = !viewState.isSearchEnabled
-        etSearch.isVisible = viewState.isSearchEnabled
+        actvSearch.isVisible = viewState.isSearchEnabled
         adapter.setData(viewState.articlesShown)
         }
     }

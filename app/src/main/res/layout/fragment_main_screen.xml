@@ -31,8 +31,8 @@
             app:layout_constraintTop_toTopOf="@id/ivSearch"
             app:layout_constraintBottom_toBottomOf="@id/ivSearch"/>
 
-        <EditText
-            android:id="@+id/etSearch"
+        <AutoCompleteTextView
+            android:id="@+id/actvSearch"
             android:layout_marginHorizontal="8dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
