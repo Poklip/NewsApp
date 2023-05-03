@@ -26,7 +26,8 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen){
     private val actvSearch: AutoCompleteTextView by lazy {requireActivity().findViewById(R.id.actvSearch)}
     private val adapter: ArticlesAdapter by lazy {
         ArticlesAdapter {index ->
-            viewModel.processUiEvent(UiEvent.OnArticleClicked(index))
+            onArticleClicked()
+            //viewModel.processUiEvent(UiEvent.OnArticleClicked(index))
         }
     }
 
@@ -54,6 +55,9 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen){
 
     }
 
+    private fun onArticleClicked() {
+        parentFragmentManager.beginTransaction().replace(R.id.container, ArticleFragment()).commit()
+    }
 
     private fun render(viewState: ViewState) {
         tvAppTitle.isVisible = !viewState.isSearchEnabled

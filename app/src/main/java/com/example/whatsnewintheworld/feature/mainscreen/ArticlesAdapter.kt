@@ -10,6 +10,12 @@ import com.example.whatsnewintheworld.feature.domain.ArticleModel
 
 class ArticlesAdapter (val onItemClicked: (Int) -> Unit) : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
 
+
+    companion object {
+        var urlToImage: String = ""
+        var articleFabula: String = ""
+    }
+
     private var articlesData: List<ArticleModel> = emptyList()
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -45,6 +51,9 @@ class ArticlesAdapter (val onItemClicked: (Int) -> Unit) : RecyclerView.Adapter<
         viewHolder.textViewSourceName.text = articlesData[position].source
         viewHolder.textViewTitle.text = articlesData[position].title
         viewHolder.textViewPublishedAt.text = articlesData[position].publishedAt
+        urlToImage = articlesData[position].urlToImage.toString()
+        articleFabula = articlesData[position].title
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)

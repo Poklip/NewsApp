@@ -41,8 +41,8 @@ class MainScreenViewModel(private val interactor: ArticlesInteractor, private va
 
             is UiEvent.OnArticleClicked -> {
                 viewModelScope.launch {
-                    MainScreenFragment().parentFragmentManager.beginTransaction().replace(R.id.container, ArticleFragment()).commit()
-                    //bookmarksInteractor.create(previousState.articlesShown[event.index])
+                    //MainScreenFragment().parentFragmentManager.beginTransaction().replace(R.id.container, ArticleFragment()).commit()
+                    bookmarksInteractor.create(previousState.articlesShown[event.index])
                 }
                 return null
             }
