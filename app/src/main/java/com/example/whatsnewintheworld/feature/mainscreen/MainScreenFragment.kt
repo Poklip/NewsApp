@@ -3,15 +3,19 @@ package com.example.whatsnewintheworld.feature.mainscreen
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.AutoCompleteTextView
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.whatsnewintheworld.R
+import com.example.whatsnewintheworld.feature.article.ui.ArticleFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.zip.Inflater
 
 class MainScreenFragment : Fragment(R.layout.fragment_main_screen){
 
@@ -30,8 +34,6 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen){
         super.onViewCreated(view, savedInstanceState)
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
         recyclerView.adapter = adapter
-
-
 
         ivSearch.setOnClickListener {
             viewModel.processUiEvent(UiEvent.OnSearchButtonClicked)

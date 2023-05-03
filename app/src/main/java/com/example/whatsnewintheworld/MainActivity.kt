@@ -1,15 +1,10 @@
 package com.example.whatsnewintheworld
 
 import android.os.Bundle
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.whatsnewintheworld.feature.bookmarks.ui.BookmarksFragment
 import com.example.whatsnewintheworld.feature.mainscreen.MainScreenFragment
-import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
