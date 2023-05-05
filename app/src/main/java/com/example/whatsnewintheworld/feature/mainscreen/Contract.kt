@@ -1,5 +1,6 @@
 package com.example.whatsnewintheworld.feature.mainscreen
 
+import androidx.fragment.app.Fragment
 import com.example.whatsnewintheworld.base.MyEvent
 import com.example.whatsnewintheworld.feature.domain.ArticleModel
 
@@ -10,9 +11,10 @@ data class ViewState(
 )
 
 sealed class UiEvent : MyEvent {
-    data class OnArticleClicked(val index: Int) : UiEvent()
+    data class OnArticleClicked(val fragment: Fragment) : UiEvent()
     object OnSearchButtonClicked : UiEvent()
     data class OnSearchEdited(val keyText: String) : UiEvent()
+    data class OnSaveButtonClicked(val index : Int) : UiEvent()
 }
 
 sealed class DataEvent : MyEvent {

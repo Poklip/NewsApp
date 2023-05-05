@@ -26,8 +26,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen){
     private val actvSearch: AutoCompleteTextView by lazy {requireActivity().findViewById(R.id.actvSearch)}
     private val adapter: ArticlesAdapter by lazy {
         ArticlesAdapter {index ->
-            onArticleClicked()
-            //viewModel.processUiEvent(UiEvent.OnArticleClicked(index))
+            viewModel.processUiEvent(UiEvent.OnArticleClicked(this))
         }
     }
 
@@ -41,23 +40,15 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen){
         }
 
         actvSearch.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(text: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(text: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
+            override fun beforeTextChanged(text: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun onTextChanged(text: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun afterTextChanged(text: Editable?) {
                 viewModel.processUiEvent(UiEvent.OnSearchEdited(text.toString()))
             }
-
         })
-
     }
 
-    private fun onArticleClicked() {
-        parentFragmentManager.beginTransaction().replace(R.id.container, ArticleFragment()).commit()
-    }
 
     private fun render(viewState: ViewState) {
         tvAppTitle.isVisible = !viewState.isSearchEnabled

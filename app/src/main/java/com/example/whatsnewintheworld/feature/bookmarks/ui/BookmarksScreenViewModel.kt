@@ -36,9 +36,6 @@ class BookmarksScreenViewModel(private val interactor: BookmarksInteractor): Bas
             }
 
             is UiEvent.OnArticleClicked -> {
-                viewModelScope.launch {
-                    interactor.delete(previousState.bookmarksArticle[event.index])
-                }
                 return null
             }
 

@@ -2,7 +2,6 @@ package com.example.whatsnewintheworld.feature.mainscreen
 
 import android.util.Log
 import androidx.lifecycle.viewModelScope
-import com.example.whatsnewintheworld.MainActivity
 import com.example.whatsnewintheworld.R
 import com.example.whatsnewintheworld.base.BaseViewModel
 import com.example.whatsnewintheworld.base.MyEvent
@@ -39,10 +38,12 @@ class MainScreenViewModel(private val interactor: ArticlesInteractor, private va
                 return previousState.copy(articles = event.articles, articlesShown = event.articles)
             }
 
+
+
             is UiEvent.OnArticleClicked -> {
                 viewModelScope.launch {
-                    //MainScreenFragment().parentFragmentManager.beginTransaction().replace(R.id.container, ArticleFragment()).commit()
-                    bookmarksInteractor.create(previousState.articlesShown[event.index])
+                    event.fragment.parentFragmentManager.beginTransaction().add(android.R.id.content, ArticleFragment()).commit()
+                    //bookmarksInteractor.create(previousState.articlesShown[event.index])
                 }
                 return null
             }
