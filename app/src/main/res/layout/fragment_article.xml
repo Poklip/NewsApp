@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:visibility="visible"
     tools:context=".MainActivity"
-    android:background="@color/white"
+    android:background="?colorOnPrimary"
     tools:visibility="visible">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -19,17 +19,13 @@
             android:id="@+id/collapsingToolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:collapsedTitleTextColor="@color/white"
-            app:contentScrim="?attr/colorPrimary"
-            app:expandedTitleTextColor="@color/white"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/articlePreviewImageView"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:scaleType="centerCrop"
-                android:src="@color/white" />
+                android:scaleType="centerCrop"/>
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolBar"
