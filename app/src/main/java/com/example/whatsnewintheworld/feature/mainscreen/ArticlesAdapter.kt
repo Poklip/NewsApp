@@ -16,6 +16,7 @@ class ArticlesAdapter (private val onItemClicked: (Int) -> Unit) : RecyclerView.
     companion object {
         var urlToImage: String = ""
         var articleFabula: String = ""
+        var urlToSource: String = ""
     }
 
     private var articlesData: List<ArticleModel> = emptyList()
@@ -48,6 +49,7 @@ class ArticlesAdapter (private val onItemClicked: (Int) -> Unit) : RecyclerView.
             onItemClicked.invoke(position)
             urlToImage = articlesData[position].urlToImage.toString()
             articleFabula = articlesData[position].title
+            urlToSource = articlesData[position].url
         }
 
 
