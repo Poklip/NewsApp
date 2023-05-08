@@ -38,8 +38,6 @@ class MainScreenViewModel(private val interactor: ArticlesInteractor, private va
                 return previousState.copy(articles = event.articles, articlesShown = event.articles)
             }
 
-
-
             is UiEvent.OnArticleClicked -> {
                 viewModelScope.launch {
                     event.fragment.parentFragmentManager.beginTransaction().add(android.R.id.content, ArticleFragment()).commit()
