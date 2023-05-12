@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.whatsnewintheworld.feature.bookmarks.ui.BookmarksFragment
 import com.example.whatsnewintheworld.feature.mainscreen.MainScreenFragment
-import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -29,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         }
         bottomNavigationMenu.selectedItemId = R.id.itemMain
         }
+
+
 
     private fun selectTab(fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(R.id.container, fragment).commit()
